@@ -171,9 +171,11 @@ public class MainActivity extends AppCompatActivity {
                                     message += arrayList.get(a).toString() + "\n";
                                 }
 
-                                SmsManager sms = SmsManager.getDefault();
-                                sms.sendTextMessage("81896421", null, message, null, null);
-
+                                Intent sms = new Intent(Intent.ACTION_VIEW);
+                                sms.setType("vnd.android-dir/mms-sms");
+                                sms.putExtra("address","81896421");
+                                sms.putExtra("sms_body",message);
+                                startActivity(sms);
                             }
                         }
                     });
